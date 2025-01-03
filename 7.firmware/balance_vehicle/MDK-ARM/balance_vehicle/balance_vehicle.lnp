@@ -1,0 +1,26 @@
+--cpu Cortex-M3
+"balance_vehicle\startup_stm32f103xb.o"
+"balance_vehicle\main.o"
+"balance_vehicle\gpio.o"
+"balance_vehicle\usart.o"
+"balance_vehicle\stm32f1xx_it.o"
+"balance_vehicle\stm32f1xx_hal_msp.o"
+"balance_vehicle\stm32f1xx_hal_gpio_ex.o"
+"balance_vehicle\stm32f1xx_hal_tim.o"
+"balance_vehicle\stm32f1xx_hal_tim_ex.o"
+"balance_vehicle\stm32f1xx_hal_uart.o"
+"balance_vehicle\stm32f1xx_hal.o"
+"balance_vehicle\stm32f1xx_hal_rcc.o"
+"balance_vehicle\stm32f1xx_hal_rcc_ex.o"
+"balance_vehicle\stm32f1xx_hal_gpio.o"
+"balance_vehicle\stm32f1xx_hal_dma.o"
+"balance_vehicle\stm32f1xx_hal_cortex.o"
+"balance_vehicle\stm32f1xx_hal_pwr.o"
+"balance_vehicle\stm32f1xx_hal_flash.o"
+"balance_vehicle\stm32f1xx_hal_flash_ex.o"
+"balance_vehicle\stm32f1xx_hal_exti.o"
+"balance_vehicle\system_stm32f1xx.o"
+--library_type=microlib --strict --scatter "balance_vehicle\balance_vehicle.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "balance_vehicle.map" -o balance_vehicle\balance_vehicle.axf
