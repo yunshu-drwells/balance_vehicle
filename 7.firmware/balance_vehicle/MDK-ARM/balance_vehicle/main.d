@@ -29,3 +29,8 @@ balance_vehicle\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 balance_vehicle\main.o: ../Inc/usart.h
 balance_vehicle\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 balance_vehicle\main.o: ../Inc/gpio.h
+balance_vehicle\main.o: ../Inc/sys.h
+balance_vehicle\main.o: ../Inc/delay.h
+balance_vehicle\main.o: ../Inc/oled.h
+balance_vehicle\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+balance_vehicle\main.o: ../Inc/bmp.h

@@ -25,7 +25,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "sys.h"
+#include "delay.h"
+#include "oled.h"
+#include "bmp.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,7 +55,7 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+void OLED_Show(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -91,6 +94,16 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  
+  //OLED
+
+  delay_init();
+  OLED_Init();
+  OLED_ColorTurn(0);//0正常显示，1 反色显示
+  OLED_DisplayTurn(0);//0正常显示 1 屏幕翻转显示
+  
+  OLED_Refresh();
+
 
   /* USER CODE END 2 */
 
@@ -106,6 +119,10 @@ int main(void)
 	  
 	  //USART1
 	  printf("Hello c8t6!\n");
+	  
+	  //OLED
+	  OLED_Show();
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -151,7 +168,44 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void OLED_Show(){
+    u8 t;
+    t=' ';
+	OLED_ShowPicture(0,0,128,8,BMP1);
+	delay_ms(500);
+	OLED_Clear();
+	OLED_ShowChinese(0,0,0,16);//中
+	OLED_ShowChinese(18,0,1,16);//景
+	OLED_ShowChinese(36,0,2,16);//园
+	OLED_ShowChinese(54,0,3,16);//电
+	OLED_ShowChinese(72,0,4,16);//子
+	OLED_ShowChinese(90,0,5,16);//科
+	OLED_ShowChinese(108,0,6,16);//技
+	OLED_ShowString(8,16,"ZHONGJINGYUAN",16);
+	OLED_ShowString(20,32,"2014/05/01",16);
+	OLED_ShowString(0,48,"ASCII:",16);  
+	OLED_ShowString(63,48,"CODE:",16);
+	OLED_ShowChar(48,48,t,16);//显示ASCII字符	   
+	t++;
+	if(t>'~')t=' ';
+	OLED_ShowNum(103,48,t,3,16);
+	OLED_Refresh();
+	delay_ms(500);
+	OLED_Clear();
+	OLED_ShowChinese(0,0,0,16);  //16*16 中
+	OLED_ShowChinese(16,0,0,24); //24*24 中
+    OLED_ShowChinese(24,20,0,32);//32*32 中
+	OLED_ShowChinese(64,0,0,64); //64*64 中
+    OLED_Refresh();
+	delay_ms(500);
+  	OLED_Clear();
+	OLED_ShowString(0,0,"ABC",12);//6*12 “ABC”
+	OLED_ShowString(0,12,"ABC",16);//8*16 “ABC”
+    OLED_ShowString(0,28,"ABC",24);//12*24 “ABC”
+	OLED_Refresh();
+    delay_ms(500);
+    OLED_ScrollDisplay(11,4);	
+}
 /* USER CODE END 4 */
 
 /**
